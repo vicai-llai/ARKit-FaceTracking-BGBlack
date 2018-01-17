@@ -10,8 +10,13 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
+struct FaceMesh: Codable {
+    let timestamp: Double
+    let faceMeshFrame: [String: Double]
+}
 
+class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
+    
     @IBOutlet var sceneView: ARSCNView!
     // Face Tracking の起点となるノードとジオメトリを格納するノード
     private var faceNode = SCNNode()
@@ -19,6 +24,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     // シリアルキューの設定
     private let serialQueue = DispatchQueue(label: "com.test.FaceTracking.serialSceneKitQueue")
+    
+    // Json data
+    var faceMeshList = [FaceMesh]()
+    var prevTimestamp = NSDate().timeIntervalSince1970;
+    var fileCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +122,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         
         let geometry = virtualFaceNode.geometry as! ARSCNFaceGeometry
+        var curBlendShapeDict = [String: Double]()
+        for (blendShapeLocation, number) in faceAnchor.blendShapes {
+            curBlendShapeDict[blendShapeLocation.rawValue] = number.doubleValue
+        }
+        let timestamp = NSDate().timeIntervalSince1970
+        // 25 frame per second
+        if (timestamp - prevTimestamp > 0.04) {
+            prevTimestamp = timestamp
+            let faceMesh = FaceMesh(timestamp: timestamp, faceMeshFrame: curBlendShapeDict)
+            faceMeshList.append(faceMesh)
+        }
         geometry.update(from: faceAnchor.geometry)
     }
     
@@ -122,12 +143,57 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
+        let concurrentQueue = DispatchQueue(label: "fileWrite", attributes: .concurrent)
+        concurrentQueue.async {
+            self.saveFacemashesToDisk(faceMeshes: self.faceMeshList);
+        }
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
         DispatchQueue.main.async {
             // 中断復帰後トラッキングを再開させる
             self.resetTracking()
+        }
+    }
+    
+    // Helper method to get a URL to the user's documents directory
+    // see https://developer.apple.com/icloud/documentation/data-storage/index.html
+    func getDocumentsURL() -> URL {
+        if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            return url
+        } else {
+            fatalError("Could not retrieve documents directory")
+        }
+    }
+    
+    func saveFacemashesToDisk(faceMeshes: [FaceMesh]) {
+        // 1. Create a URL for documents-directory/posts.json
+        let url = getDocumentsURL().appendingPathComponent("facemeshes\(fileCount).json")
+        // 2. Endcode our [Post] data to JSON Data
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(faceMeshes)
+            // 3. Write this data to the url specified in step 1
+            print(data)
+            try data.write(to: url, options: [])
+            fileCount += 1
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    func getFaceMashesFromDisk() -> [Dictionary<String, Double>] {
+        // 1. Create a url for documents-directory/posts.json
+        let url = getDocumentsURL().appendingPathComponent("facemeshes.json")
+        let decoder = JSONDecoder()
+        do {
+            // 2. Retrieve the data on the file in this path (if there is any)
+            let data = try Data(contentsOf: url, options: [])
+            // 3. Decode an array of Posts from this Data
+            let facemashes = try decoder.decode([Dictionary<String, Double>].self, from: data)
+            return facemashes
+        } catch {
+            fatalError(error.localizedDescription)
         }
     }
 }
