@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8286124A1FDE28BE00022B9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828612491FDE28BE00022B9C /* AppDelegate.swift */; };
-		8286124E1FDE28BE00022B9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286124D1FDE28BE00022B9C /* ViewController.swift */; };
+		8286124E1FDE28BE00022B9C /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286124D1FDE28BE00022B9C /* RecorderViewController.swift */; };
 		828612511FDE28BE00022B9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8286124F1FDE28BE00022B9C /* Main.storyboard */; };
 		828612531FDE28BE00022B9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 828612521FDE28BE00022B9C /* Assets.xcassets */; };
 		828612561FDE28BE00022B9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828612541FDE28BE00022B9C /* LaunchScreen.storyboard */; };
-		828612611FDE28BE00022B9C /* FaceTracking_BGBlackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828612601FDE28BE00022B9C /* FaceTracking_BGBlackTests.swift */; };
-		8286126C1FDE28BE00022B9C /* FaceTracking_BGBlackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286126B1FDE28BE00022B9C /* FaceTracking_BGBlackUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,17 +34,13 @@
 /* Begin PBXFileReference section */
 		828612461FDE28BE00022B9C /* FaceTracking-BGBlack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FaceTracking-BGBlack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		828612491FDE28BE00022B9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8286124D1FDE28BE00022B9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8286124D1FDE28BE00022B9C /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		828612501FDE28BE00022B9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		828612521FDE28BE00022B9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		828612551FDE28BE00022B9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		828612571FDE28BE00022B9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8286125C1FDE28BE00022B9C /* FaceTracking-BGBlackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FaceTracking-BGBlackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		828612601FDE28BE00022B9C /* FaceTracking_BGBlackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTracking_BGBlackTests.swift; sourceTree = "<group>"; };
-		828612621FDE28BE00022B9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		828612671FDE28BE00022B9C /* FaceTracking-BGBlackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FaceTracking-BGBlackUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8286126B1FDE28BE00022B9C /* FaceTracking_BGBlackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTracking_BGBlackUITests.swift; sourceTree = "<group>"; };
-		8286126D1FDE28BE00022B9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +71,7 @@
 		8286123D1FDE28BE00022B9C = {
 			isa = PBXGroup;
 			children = (
-				828612481FDE28BE00022B9C /* FaceTracking-BGBlack */,
-				8286125F1FDE28BE00022B9C /* FaceTracking-BGBlackTests */,
-				8286126A1FDE28BE00022B9C /* FaceTracking-BGBlackUITests */,
+				828612481FDE28BE00022B9C /* FaceTracking */,
 				828612471FDE28BE00022B9C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,35 +86,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		828612481FDE28BE00022B9C /* FaceTracking-BGBlack */ = {
+		828612481FDE28BE00022B9C /* FaceTracking */ = {
 			isa = PBXGroup;
 			children = (
 				828612491FDE28BE00022B9C /* AppDelegate.swift */,
-				8286124D1FDE28BE00022B9C /* ViewController.swift */,
+				8286124D1FDE28BE00022B9C /* RecorderViewController.swift */,
 				8286124F1FDE28BE00022B9C /* Main.storyboard */,
 				828612521FDE28BE00022B9C /* Assets.xcassets */,
 				828612541FDE28BE00022B9C /* LaunchScreen.storyboard */,
 				828612571FDE28BE00022B9C /* Info.plist */,
 			);
-			path = "FaceTracking-BGBlack";
-			sourceTree = "<group>";
-		};
-		8286125F1FDE28BE00022B9C /* FaceTracking-BGBlackTests */ = {
-			isa = PBXGroup;
-			children = (
-				828612601FDE28BE00022B9C /* FaceTracking_BGBlackTests.swift */,
-				828612621FDE28BE00022B9C /* Info.plist */,
-			);
-			path = "FaceTracking-BGBlackTests";
-			sourceTree = "<group>";
-		};
-		8286126A1FDE28BE00022B9C /* FaceTracking-BGBlackUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8286126B1FDE28BE00022B9C /* FaceTracking_BGBlackUITests.swift */,
-				8286126D1FDE28BE00022B9C /* Info.plist */,
-			);
-			path = "FaceTracking-BGBlackUITests";
+			path = FaceTracking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +163,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "Toshihiro Goto";
+				ORGANIZATIONNAME = "Little Lights";
 				TargetAttributes = {
 					828612451FDE28BE00022B9C = {
 						CreatedOnToolsVersion = 9.2;
@@ -207,7 +181,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 828612411FDE28BE00022B9C /* Build configuration list for PBXProject "FaceTracking-BGBlack" */;
+			buildConfigurationList = 828612411FDE28BE00022B9C /* Build configuration list for PBXProject "FaceTracking" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -259,7 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8286124E1FDE28BE00022B9C /* ViewController.swift in Sources */,
+				8286124E1FDE28BE00022B9C /* RecorderViewController.swift in Sources */,
 				8286124A1FDE28BE00022B9C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +242,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				828612611FDE28BE00022B9C /* FaceTracking_BGBlackTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8286126C1FDE28BE00022B9C /* FaceTracking_BGBlackUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +493,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		828612411FDE28BE00022B9C /* Build configuration list for PBXProject "FaceTracking-BGBlack" */ = {
+		828612411FDE28BE00022B9C /* Build configuration list for PBXProject "FaceTracking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8286126E1FDE28BE00022B9C /* Debug */,

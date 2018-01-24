@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:FaceTracking-BGBlack.xcodeproj">
+      location = "self:/Users/weiqic/Documents/Github/ARKit-FaceTracking-BGBlack/FaceTracking.xcodeproj">
    </FileRef>
 </Workspace>
